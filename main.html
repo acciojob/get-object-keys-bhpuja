@@ -4,15 +4,51 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Get Object Keys</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .container {
+      max-width: 500px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    h1 {
+      color: #333;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .output {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #555;
+    }
+  </style>
 </head>
 <body>
-  <h1>Get Object Keys Example</h1>
-  <p>Open the browser console to see the output.</p>
-  
+  <div class="container">
+    <h1>Get Object Keys</h1>
+    <p>Click the button to display the keys of the object.</p>
+    <button onclick="showKeys()">Show Keys</button>
+    <div class="output" id="output"></div>
+  </div>
+
   <script>
     // Create an object called student with a property called name
     const student = {
       name: "John",
+      age: 25,
+      grade: "A",
     };
 
     // Add a method to the Object prototype
@@ -21,8 +57,13 @@
       return Object.keys(this);
     };
 
-    // Log the keys of the student object
-    console.log(student.getKeys()); // Output: ["name"]
+    // Function to display keys in the output div
+    function showKeys() {
+      const outputDiv = document.getElementById('output');
+      const keys = student.getKeys(); // Get keys using the custom method
+      outputDiv.textContent = `Keys: ${keys.join(', ')}`;
+    }
   </script>
 </body>
 </html>
+
