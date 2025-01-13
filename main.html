@@ -1,37 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Get Object Keys</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Object Keys</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
-  <h1>Get Object Keys</h1>
-  <p>Click the button to display the keys of the object.</p>
-  <button onclick="showKeys()">Show Keys</button>
-  <div id="output"></div>
 
-  <script>
-    // Create an object called student with a property called name
-    const student = {
-      name: "John",
-      age: 25,
-      grade: "A",
-    };
+    <h1>Get Object Keys Example</h1>
 
-    // Add a method to the Object prototype
-    Object.prototype.getKeys = function () {
-      return Object.keys(this);
-    };
+    <div>
+        <button id="getKeysBtn">Get Student Keys</button>
+    </div>
 
-    // Function to display keys
-    function showKeys() {
-      const outputDiv = document.getElementById('output');
-      const keys = student.getKeys(); // Get keys using the custom method
-      outputDiv.textContent = `Keys: ${keys.join(', ')}`;
-    }
-  </script>
+    <div class="result" id="result"></div>
+
+    <script>
+        // Create the student object
+        const student = {
+            name: "John"
+        };
+
+        // Add getKeys() method to Object prototype
+        Object.prototype.getKeys = function() {
+            return Object.keys(this);
+        };
+
+        // Get keys when button is clicked
+        document.getElementById('getKeysBtn').addEventListener('click', function() {
+            const keys = student.getKeys();
+            document.getElementById('result').textContent = `Keys: ${keys.join(', ')}`;
+        });
+    </script>
+
 </body>
 </html>
+
 
 
