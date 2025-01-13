@@ -27,24 +27,23 @@
 
     <div class="result" id="result"></div>
 
-    <script>
-        // Create the student object
-        const student = {
-            name: "John"
-        };
+    <script
+		// Create the student object
+const student = {
+    name: "John",
+    getKeys: function() {
+        return Object.keys(this);
+    }
+};
 
-        // Add getKeys() method to Object prototype
-        Object.prototype.getKeys = function() {
-            return Object.keys(this);
-        };
+// Event listener for the button click
+document.getElementById('getKeysBtn').addEventListener('click', function() {
+    // Get the keys of the student object
+    const keys = student.getKeys();
+    // Display the keys in the result div
+    document.getElementById('result').textContent = `Keys: ${keys.join(', ')}`;
+});
 
-        // Event listener for the button click
-        document.getElementById('getKeysBtn').addEventListener('click', function() {
-            // Get the keys of the student object
-            const keys = student.getKeys();
-            // Display the keys in the result div
-            document.getElementById('result').textContent = `Keys: ${keys.join(', ')}`;
-        });
     </script>
 
 </body>
